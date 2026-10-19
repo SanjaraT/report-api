@@ -44,13 +44,12 @@ async def create_report(body: dict):
         content={"id": report_id, "status": "pending"}
     )
 
-# this must be at the top level — NOT inside create_report
 @app.get("/reports/{report_id}")
 def get_report(report_id: str):
     print(f"GET called for {report_id} — dict has: {list(reports.keys())}", flush=True)
     if report_id not in reports:
         raise HTTPException(status_code=404, detail=f"Report {report_id} not found")
-    return reports[report_id]  # ← outside the if block
+    return reports[report_id] 
 
 @app.get("/reports")
 def list_reports():
