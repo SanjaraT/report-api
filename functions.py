@@ -21,10 +21,10 @@ async def make_report(ctx: inngest.Context) -> dict:
     report_id = ctx.event.data["id"]
     topic = ctx.event.data["topic"]
 
-    # Step 1: simulate slow work
+    # simulate slow work
     await ctx.step.sleep("do-the-slow-work", 8)
 
-    # Step 2: build the report
+    # build the report
     async def build():
         import main
         import sys
